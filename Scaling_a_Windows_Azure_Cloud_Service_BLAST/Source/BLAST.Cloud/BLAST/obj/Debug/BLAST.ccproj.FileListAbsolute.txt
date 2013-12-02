@@ -1,0 +1,2 @@
+C:\cygwin\home\wenmingy\Azure-technical-papers\04 BLAST Overview\blastservice\Source\BLAST.Cloud\BLAST\bin\Debug\ServiceConfiguration.cscfg
+C:\cygwin\home\wenmingy\Azure-technical-papers\04 BLAST Overview\blastservice\Source\BLAST.Cloud\BLAST\bin\Debug\ServiceDefinition.csdef

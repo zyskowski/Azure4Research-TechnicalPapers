@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>RecipeVVM</id>
+    <version>0.0.1.4</version>
+    <title>RecipeVVM</title>
+    <authors>Microsoft DPE</authors>
+    <owners>Microsoft DPE</owners>
+    <licenseUrl>http://www.opensource.org/licenses/ms-pl</licenseUrl>
+    <projectUrl>https://github.com/HaishiBai/recipe-vvm</projectUrl>
+    <iconUrl>http://azure4fun.blob.core.windows.net/code/recipevvm.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Recipe-VVM provides a reference architecture, design guidance, as well as supporting libraries to assist you to build available, scalable, and extensible cloud services on Windows Azure.</description>
+    <releaseNotes />
+    <copyright />
+    <language>en-US</language>
+    <tags>Windows Azure Cloud Service DPE Availability Scalability</tags>
+  </metadata>
+</package>

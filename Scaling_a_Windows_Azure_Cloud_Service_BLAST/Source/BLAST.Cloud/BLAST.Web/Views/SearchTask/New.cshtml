@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "New Task";
+}
+
+<h2>New Task</h2>
+
+
+<div id="newTest">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td colspan="3">
+                <input type="text" data-bind="value: name,valueUpdate: 'afterkeydown'" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="3">
+                <span data-bind='visible: name.hasError, text: name.validationMessage' class="error_text"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Input File</td>
+            <td>
+                <select data-bind="options: inputs, value: inputFile">
+                </select>
+            </td>
+            <td>&nbsp;or, Input a range of input file indxes:&nbsp;</td>
+            <td>
+                <input type="text" data-bind="value: inputFiles" /></td>
+            </tr>
+        <tr>
+            <td></td>
+            <td colspan="3">
+                <span data-bind='visible: $data.hasError, text: $data.validationMessage' class="error_text"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+            </td>
+            <td class="sample_text">Example:1-50, 108</td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <span data-bind='visible: $data.hasServerError, text: $data.serverValidationMessage' class="error_text"></span>
+            </td>
+        </tr>
+    </table>
+    <p>
+        <td>
+            <button data-bind="click: function () { submit(); }" class="queue_button">Queue</button>
+        </td>
+    </p>
+</div>
+
+@section Scripts {
+    <script>
+        var vm = new testVM('', '', '','','','','');
+        $(function () {
+            ko.applyBindings(vm, newTest);
+            vm.refresh();
+        });
+        function submit() {
+            if (vm.validate()) {
+                vm.create().done(function () {
+                    window.location = "/SearchTask";
+                });
+            }
+        }
+    </script>
+}

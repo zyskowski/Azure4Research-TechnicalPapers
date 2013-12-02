@@ -1,0 +1,5 @@
+C:\cygwin\home\wenmingy\Azure-technical-papers\04 BLAST Overview\blastservice\Source\BLAST.Cloud\BLAST.Entities\bin\Debug\BLAST.Entities.dll
+C:\cygwin\home\wenmingy\Azure-technical-papers\04 BLAST Overview\blastservice\Source\BLAST.Cloud\BLAST.Entities\bin\Debug\BLAST.Entities.pdb
+C:\cygwin\home\wenmingy\Azure-technical-papers\04 BLAST Overview\blastservice\Source\BLAST.Cloud\BLAST.Entities\obj\Debug\BLAST.Entities.csprojResolveAssemblyReference.cache
+C:\cygwin\home\wenmingy\Azure-technical-papers\04 BLAST Overview\blastservice\Source\BLAST.Cloud\BLAST.Entities\obj\Debug\BLAST.Entities.dll
+C:\cygwin\home\wenmingy\Azure-technical-papers\04 BLAST Overview\blastservice\Source\BLAST.Cloud\BLAST.Entities\obj\Debug\BLAST.Entities.pdb

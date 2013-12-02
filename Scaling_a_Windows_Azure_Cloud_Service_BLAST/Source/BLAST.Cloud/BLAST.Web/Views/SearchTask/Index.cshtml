@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Search Tasks";
+}
+
+<h2>Search Tasks</h2>
+<div id="testsDiv">
+    <p>
+        <button data-bind="click: refresh">Refresh</button>
+        <button data-bind="click: deleteAllCompleted">Delete All Completed Tasks</button>
+        <button data-bind="click: deleteAllQueued">Delete All Queued Tasks</button>
+    </p>
+    <div data-bind="foreach: tests">
+        <div class="task_border" data-bind="css: { error: state() == 'ERROR', success: state() == 'OK', pending: state() == 'PENDING', queued: state() == '' || state()=='QUEUED' }">
+            <table class="task_table">
+                <tr class="task_toolrow">
+                    <td>
+                        <div class="task_title" data-bind="text: name">
+                        </div>
+                    </td>
+                    <td class="task_toolcell">
+                        <div class="task_tool">
+                            <button data-bind="click: function (data, event) { viewTask(data, event); }, visible: hash()!=''">View Result</button>
+                            <button data-bind="click: retryTask, visible: state() == 'ERROR'">Retry</button>
+                            <button data-bind="click: $parent.deleteTask, visible: state() != 'PENDING'">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <div class="task_process" data-bind="text: message"></div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-1.1.3.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        var vm;
+        var msgHub = $.connection.messageHub;
+        var flag = false;
+        $(function () {
+            vm = new testsVM();
+            $.connection.hub.start().done(function () {
+
+            });
+            ko.applyBindings(vm, testsDiv);
+            vm.refresh();
+        });
+        msgHub.client.broadcastMessage = function (taskId, state, hash, outputFile, message) {
+            vm.updateTask(taskId, state, hash, outputFile, message);
+        };
+        function viewTask(data, event) {
+            window.open('@ViewBag.BOVWebSiteViewAddress' + data.hash());
+        }
+    </script>
+}

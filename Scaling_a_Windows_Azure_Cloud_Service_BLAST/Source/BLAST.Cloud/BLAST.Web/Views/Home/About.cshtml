@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<article>
+    <p>
+        The National Center for Biotechnology Information’s Basic Local Alignment Search Tool (NCBI BLAST) HPC Sample demonstrates how to run a nucleotide match algorithm on the human genome using an HPC parametric sweep application. The parametric sweep application uses a set of input files that contain sequences of nucleotides, comparing them to the human genome database. The application creates output files containing sequence similarities and uploads these files to a BLAST output visualizer (BOV) website. To run the nucleotide match, the sample uses the blastn utility, which is a part of the BLAST+ application. The architecture of the sample and the steps of its execution are described in Figure 1:
+    </p>
+<img src="~/Content/diagram.png" />
+    <p>
+<ol>
+<li>The client application (browser) submits a parametric sweep job to the Web frontend via an AJAX call to the REST API.</li>
+<li>The Web frontend pushes the job to a Service Bus queue.</li>
+<li>A compute node gets the sweep job from the job queue and executes on it. The compute nodes are competing consumers of the job queue. This pattern allows us to scale out compute nodes as needed and ensures a submitted job is executed at least once.</li>
+<li>The parametric sweep application running on a compute node downloads an input file from a Windows Azure blob storage. The input file includes a nucleotide that is to be compared to the human genome database previously downloaded to each Windows Azure compute node (a Worker Role instance).</li>
+<li>After completing a sweep index, the BLAST application uploads the resulting matches file to the BLAST output visualization (BOV) website and receives a matching URL for the file’s visualization page.</li>
+<li>The output file and the URL are written to Windows Azure storage: the file is uploaded to a blob, and the URL is written in a table.</li>
+<li>While the parametric sweep job is running, the compute node notifies the web frontend its progress via a SignalR channel. The web frontend then accesses the Windows Azure table storage to get updated URL list and shows it to the user.</li>
+<li>The user can select any of the URLs to see the rendered image for the nucleotide match.</li>
+    </ol>
+    </p>
+</article>
